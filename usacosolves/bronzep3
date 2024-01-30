@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main() {
+    int length, start;
+    cin >> length >> start;
+
+    int tot = length * 2;
+
+    vector<int> nums;
+    nums.reserve(length * 2);
+
+    int c = 0;
+
+    while(c < length * 2) {
+        cin >> nums[c];
+        c++;
+    }
+
+    // if nums[i] is 1 it's target else jumpad
+    // nums[i+1] is power
+
+    vector<int> jp;
+    vector<int> power;
+    jp.reserve(length); power.reserve(length);
+
+    for(int i = 0; i < tot; i++) {
+        if (i % 2 != 0) { jp.push_back(nums[i]); } ;
+    }
+    
+    for(int i = 0; i < tot; i++) {
+        if (i % 2 == 0) { power.push_back(nums[i]); } ;
+    }
+
+    for(int i = 0; i < length; i++) {
+        if (start == power[i]) { power.push_back(nums[i]); } ;
+    }
+
+    // now we have vectors with powers and vectors with the values.
+    //if power[i] == 0 its jumppad so speed +1 and reverse direction
+    // power[i] == 1 its target so add to break counter
+
+    // JP IS POWER (HOW MUCH TO ADD) AND POWER IS JP (WHETHER ITS JUMPING PAD OR NOT)
+
+    vector<int> positions; positions.reserve(length);
+    
+    for(int i = 0; i < length; i++) {
+        positions.push_back(i+1);
+    }
+
+    int targets = 0;
+    int position;
+
+    for(int i = 0; i < length; i++) {
+        if (positions[i]==start) {
+            position == i;
+        }
+    }
+
+    //starting point == positions[position]
+
+while(position < length) {
+    for(int i = 0; i < length; i++) 
+    
+    { if (power[i] == 1) {
+        targets = targets + 1;
+        positions.insert(positions.begin()+i, 2); // based on pos add the power designated
+    } else if (power[i] == 0) {
+        positions.insert(positions.begin()+i, jp[i]-positions[i]);
+    } else if (power[i] == 2) { // the now broken targets
+        position += 1;
+    } }
+    }
+
+
+    cout << targets;
+
+
+}
