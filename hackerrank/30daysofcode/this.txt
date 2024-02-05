@@ -1,1 +1,0 @@
-Was too simple n just not helpful for usaco or cf, will probably try hackerrank dsa soon
