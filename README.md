@@ -1,3 +1,3 @@
 # competitive-programming
 
-too weak
+a collection of my (weak) solves
