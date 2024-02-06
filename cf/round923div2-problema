@@ -1,3 +1,4 @@
+// solution: get first and last indexes containing 'B', edit output based on conditions
 #include <bits/stdc++.h>
 #include <cstddef>
 using namespace std;
@@ -26,6 +27,7 @@ void min() {
     last = int(cells.find_last_of(ch));
     int first = cells.find('B');
 
+// conditions for output
     if (first == 0) {
         cout << last+1 << endl;
     } else if (first > 0 && last > 0) {
